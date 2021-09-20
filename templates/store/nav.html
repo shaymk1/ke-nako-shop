@@ -16,8 +16,18 @@
           <div class="main-menu d-none d-lg-block">
             <nav>
               <ul id="navigation">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">shop</a></li>
+
+                <li><a href=" {% url 'home' %}">Home</a></li>
+                <li class="hot">
+                  <a href="{{category.get_absolute_url}}">Category</a>
+                  <ul class="submenu">
+                  {% for category in links  %}
+                    <li><a href="{{category.get_absolute_url}}"> {{category.title}}</a></li>
+                  {% endfor %}
+                    {% comment %} <li><a href="shop.html"> New Arrivals</a></li>
+                    <li><a href="product_details.html"> Gallery</a></li> {% endcomment %}
+                  </ul>
+                <li><a href=" {% url 'shop' %}">shop</a></li>
                 <li><a href="about.html">about</a></li>
                 <li class="hot">
                   <a href="#">Latest</a>
